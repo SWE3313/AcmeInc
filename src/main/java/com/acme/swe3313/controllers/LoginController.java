@@ -30,7 +30,7 @@ public class LoginController {
         try {
             if (associate.login(email, password)) {
                 populateCustomers();
-                Application.setScene("customers-view.fxml");
+                Application.setScene("customers.fxml");
             } else {
                 errorLabel.setVisible(true);
                 errorLabel.setText("Invalid email or password");

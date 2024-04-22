@@ -10,22 +10,49 @@ import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class Application extends javafx.application.Application{
-    public static List<Customer> customers = new ArrayList<>();
-    public static final String PROGRAM_DATA_PATH = System.getenv("APPDATA") + "\\Acme Distributing";
+public class Application extends javafx.application.Application {
+    /**
+     * The current stage that is being displayed
+     */
     private static Stage primaryStage;
+    /**
+     * List of customers that will be populated from the customers.json file
+     * This is the local 'state' of the application
+     */
+    public static List<Customer> customers = new ArrayList <> ();
+    /**
+     * The path to the program data directory (IE %appdata%/Acme Distributing)
+     */
+    public static final String PROGRAM_DATA_PATH = System.getenv("APPDATA") + "\\Acme Distributing";
 
+    /**
+     * The main entry point for the program
+     * @param args
+     */
+    public static void main(String[] args) {
+        // First, create the necessary files
+        try {
+            createConfigFiles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        launch();
+    }
+
+    /**
+     * Starts the program and shows the login screen
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Acme Distributing");
         stage.setScene(scene);
@@ -55,7 +82,7 @@ public class Application extends javafx.application.Application{
 
         // Ensure the customers.json file exists, and create it if it doesn't.
         File customersFile = new File(PROGRAM_DATA_PATH + "\\customers.json");
-        boolean customersFileCreated =  customersFile.createNewFile();
+        boolean customersFileCreated = customersFile.createNewFile();
 
         // If the file was just created, write an empty json object to it
         if (customersFileCreated) {
@@ -73,37 +100,22 @@ public class Application extends javafx.application.Application{
             JSON.write("/orders.json", new JSONObject());
         }
     }
-    public static void populateCustomers(){
-        JSONArray customersArray = JSON.parseArray("/customers.json");
 
+    /**
+     * Populates the customers list with the customers from the customers.json file
+     */
+    public static void populateCustomers() {
+        JSONArray customersArray = JSON.parseDynamicArray("/customers.json");
 
-        for(int i=0; i<customersArray.size(); i++) {
-            JSONObject customer = (JSONObject) customersArray.get(i);
-            String iD = customer.get("iD").toString();
-            String name = customer.get("name").toString();
-            String address = customer.get("address").toString();
-            String city = customer.get("city").toString();
-            String phone = customer.get("phone").toString();
-            String state = customer.get("state").toString();
-            String store = customer.get("store").toString();
+        // Only proceed if the customers list is empty
+        if (!customers.isEmpty()) {
+            return;
+        }
 
-            Customer c  = new Customer (name, store, address, city, state, phone);
-            c.setCustomerId(iD);
+        for (Object o : customersArray) {
+            JSONObject customer = (JSONObject) o;
+            Customer c = new Customer(customer);
             customers.add(c);
         }
-
     }
-
-
-    public static void main(String[] args) {
-        // First, create the necessary files
-        try {
-            createConfigFiles();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        launch();
-    }
-
 }

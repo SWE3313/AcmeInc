@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:id="box" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="48.0" style="-fx-border-color: transparent transparent #D1D5DB transparent;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.swe3313.controllers.components.CustomerRowController">
+    <children>
+        <Label fx:id="storeName" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" text="Store Name">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="address" layoutX="34.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="275.0" text="Address" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <padding>
+                <Insets right="12.0" />
+            </padding>
+        </Label>
+        <Label fx:id="license" layoutX="209.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="license number" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="cardNumber" layoutX="384.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="payment method" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="dockCapabilities" layoutX="559.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="760.0" text="dock capabilities" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+    </children>
+    <padding>
+        <Insets left="24.0" right="24.0" />
+    </padding>
+    </HBox>

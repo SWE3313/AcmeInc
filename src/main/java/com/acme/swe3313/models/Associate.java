@@ -9,7 +9,6 @@ import org.json.simple.JSONObject;
 public class Associate {
     private String name;
     private String email;
-    private boolean isLoggedIn = false;
 
     /**
      * Get the associate's name
@@ -25,14 +24,6 @@ public class Associate {
      */
     public String getEmail() {
         return email;
-    }
-
-    /**
-     * Check if the associate is logged in
-     * @return true if the associate is logged in, false otherwise
-     */
-    public boolean isLoggedIn() {
-        return isLoggedIn;
     }
 
     /**
@@ -57,8 +48,6 @@ public class Associate {
             if (associate.get("password").equals(password)) {
                 this.name = (String) associate.get("name");
                 this.email = email;
-                this.isLoggedIn = true;
-
 
                 return true;
             }
