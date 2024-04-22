@@ -43,7 +43,8 @@ public class AddCustomerController {
     }
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
-        JSONArray customers = new JSONArray();
+        JSONArray customers = JSON.parseDynamicArray("/customers.json");
+
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
         String streetAddress = streetAddressInput.getText();
@@ -52,8 +53,6 @@ public class AddCustomerController {
         String phoneNumber = phoneNumberInput.getText();
         String license = licenseInput.getText();
         String cardNum = cardNumInput.getText();
-       /* String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
-        String cardCvv = cardCvvInput.getText();*/
         String dockCapabilities = dockCapabilitiesInput.getText();
 
         // Create the new customer object
@@ -78,11 +77,11 @@ public class AddCustomerController {
         // Write the new customer to the customers.json file
         JSON.write("/customers.json", customers);
         customers.add(customer);
-
         Application.setScene("customers-view.fxml");
     }
 
 
-        }
+
+}
 
 

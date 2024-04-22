@@ -1,34 +1,35 @@
 package com.acme.swe3313.controllers;
-import com.acme.swe3313.Application;
 import com.acme.swe3313.models.Customer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 
 public class CustomerBoxController {
+    @FXML
+    private Label address;
 
     @FXML
-    private Label addressText;
+    private HBox box;
+
     @FXML
-    private HBox customerHBox;
+    private Label dockCapabilities;
+
     @FXML
-    private Label dockCapabilitiesText;
+    private Label license;
+
     @FXML
-    private Label licenseText;
+    private Label name;
+
     @FXML
-    private Label nameText;
-    @FXML
-    private Label paymentMethText;
+    private Label paymentMethod;
 
     public void setData(Customer customer){
-    nameText.setText(customer.getStore());
-    addressText.setText(customer.getStreetAddress());
-    licenseText.setText(customer.getBeerLicense());
-    paymentMethText.setText(customer.getPaymentMethod());
-    dockCapabilitiesText.setText(customer.getDockCapabilities());
+    name.setText(customer.getStore());
+    address.setText(customer.getStreetAddress());
+    license.setText(customer.getBeerLicense());
+    paymentMethod.setText(customer.getPaymentMethod());
+    dockCapabilities.setText(customer.getDockCapabilities());
 
-    customerHBox.setStyle("-fx-border-color: #"+ "transparent");
+    box.setStyle("-fx-border-color: transparent transparent #D1D5DB transparent");
     }
 }

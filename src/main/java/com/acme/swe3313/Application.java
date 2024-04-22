@@ -13,9 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Application extends javafx.application.Application {
+public class Application extends javafx.application.Application{
     public static List<Customer> customers = new ArrayList<>();
     public static final String PROGRAM_DATA_PATH = System.getenv("APPDATA") + "\\Acme Distributing";
     private static Stage primaryStage;
@@ -75,10 +76,10 @@ public class Application extends javafx.application.Application {
     public static void populateCustomers(){
         JSONArray customersArray = JSON.parseArray("/customers.json");
 
-        for (Object obj : customersArray) {
-            JSONObject customer = (JSONObject) obj;
 
-            String id = customer.get("customer_id").toString();
+        for(int i=0; i<customersArray.size(); i++) {
+            JSONObject customer = (JSONObject) customersArray.get(i);
+            String iD = customer.get("iD").toString();
             String name = customer.get("name").toString();
             String address = customer.get("address").toString();
             String city = customer.get("city").toString();
@@ -86,12 +87,11 @@ public class Application extends javafx.application.Application {
             String state = customer.get("state").toString();
             String store = customer.get("store").toString();
 
-
             Customer c  = new Customer (name, store, address, city, state, phone);
-            c.setCustomerId(id);
-
+            c.setCustomerId(iD);
             customers.add(c);
         }
+
     }
 
 

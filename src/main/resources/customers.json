@@ -7,7 +7,8 @@
     "state": "GA",
     "phone": "558 555 1213"
   },
-  {"Store":"BPD Grocery Store",
+  {
+    "store":"BPD Grocery Store",
       "name": "James Johnson",
       "iD": "BPDGS_254786510",
       "address": "2960 Shallowford Rd",

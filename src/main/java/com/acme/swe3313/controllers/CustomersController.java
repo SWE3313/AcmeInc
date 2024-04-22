@@ -5,10 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,19 +19,11 @@ import static com.acme.swe3313.Application.customers;
 public class CustomersController implements Initializable{
 
     @FXML
-    public static VBox customerHbox;
+    public static VBox customerVbox;
     @FXML
-    private VBox customerVbox;
+    private HBox customerLayout;
+    private List<Customer> initialList;
 
-
-    @FXML
-    public static TextField nameTextField;
-    @FXML
-    public static TextField addressTextField;
-    @FXML
-    public static TextField licenseTextField;
-    @FXML
-    public static TextField payMethodTextField;
 
  /*   public void updateCustomersView(Customer c) {
         nameTextField.setText(c.getName());
@@ -52,6 +44,7 @@ public class CustomersController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
                 try {
                     for(Customer customer: customers) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -59,11 +52,12 @@ public class CustomersController implements Initializable{
                         HBox newBox = fxmlLoader.load();
                         CustomerBoxController boxController = fxmlLoader.getController();
                         boxController.setData(customer);
-                        customerHbox.getChildren().add(newBox);
+                        customerVbox.getChildren().add(newBox);
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
+
     }
 
