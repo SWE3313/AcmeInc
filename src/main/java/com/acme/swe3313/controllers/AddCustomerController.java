@@ -43,7 +43,7 @@ public class AddCustomerController {
      */
     @FXML
     private void onExit(ActionEvent event) throws IOException {
-        Application.setScene("customers-view.fxml");
+        Application.setScene("customers.fxml");
     }
 
     /**
@@ -81,6 +81,6 @@ public class AddCustomerController {
         JSON.write("/customers.json", customers);
         Application.customers.add(customer);
 
-        Application.setScene("customers-view.fxml");
+        Application.setScene("customers.fxml");
     }
 }

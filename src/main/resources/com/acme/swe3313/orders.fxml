@@ -80,12 +80,12 @@
                <children>
                   <HBox style="-fx-border-color: transparent transparent #D1D5DB transparent;">
                      <children>
-                        <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" text="NAME" textFill="#6b7280">
+                        <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0" text="CUSTOMER STORE NAME" textFill="#6b7280">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="34.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="275.0" text="ADDRESS" textFill="#6b7280">
+                        <Label layoutX="34.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0" text="DELIVERY ADDRESS" textFill="#6b7280">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -93,17 +93,7 @@
                               <Insets right="12.0" />
                            </padding>
                         </Label>
-                        <Label layoutX="209.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="BEER LICENSE NUMBER" textFill="#6b7280">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="384.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="PAYMENT METHOD" textFill="#6b7280">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="559.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="760.0" text="DOCK CAPABILITIES" textFill="#6b7280">
+                        <Label layoutX="209.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="QUANTITY ORDERED" textFill="#6b7280">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

@@ -19,7 +19,6 @@ public class Customer {
     private String streetAddress;
     private String city;
     private String state;
-    private String address = getStreetAddress() + ", " + getCity() + ", " + getState();
 
     // Payment Information
     private String cardNumber;
@@ -77,7 +76,6 @@ public class Customer {
 
     /**
      * Overloaded constructor to create a customer from a JSON object
-     *
      * @param customer
      */
     public Customer(JSONObject customer) {
@@ -186,7 +184,7 @@ public class Customer {
      * Get the address of the customer
      */
     public String getAddress() {
-        return address;
+        return  streetAddress + ", " + city + ", " + state;
     }
 
     /**
@@ -273,12 +271,6 @@ public class Customer {
         this.state = state;
     }
 
-    /**
-     * Set the address of the customer
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     /**
      * Set the card number of the customer

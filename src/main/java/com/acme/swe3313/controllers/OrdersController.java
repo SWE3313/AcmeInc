@@ -1,8 +1,14 @@
 package com.acme.swe3313.controllers;
 
 import com.acme.swe3313.Application;
+import com.acme.swe3313.controllers.components.CustomerRowController;
+import com.acme.swe3313.controllers.components.OrderRowController;
+import com.acme.swe3313.models.Customer;
+import com.acme.swe3313.models.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -16,7 +22,20 @@ public class OrdersController {
      */
     @FXML
     public void initialize() {
+        try {
+            for (Order order: Application.orders) {
 
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(Application.class.getResource("components/order_row.fxml"));
+                HBox newBox = fxmlLoader.load();
+                OrderRowController boxController = fxmlLoader.getController();
+                boxController.setData(order);
+
+                orderVBox.getChildren().add(newBox);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -36,7 +55,7 @@ public class OrdersController {
      */
     @FXML
     private void onLogout(ActionEvent event) throws IOException {
-        Application.setScene("login.fxml");
+        Application.setScene("com/acme/swe3313/login.fxml");
     }
 
     /**

@@ -1,63 +1,88 @@
 package com.acme.swe3313.models;
-import java.time.LocalDate;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.util.*;
 
 public class Order {
-    static int orderNum;
-    private int startingNum = 600;
-    private double orderTotal;
-    private String salesRep, orderDate, orderStatus;
-    Random ordID = new Random();
+    private final String customerID;
+    private final List<OrderItem> items;
 
-    // default constructor initializing all variables
-    // and generating random order number
-    public Order(){
-        orderTotal = 0.0;
-        salesRep = " ";
-        this.orderDate = String.valueOf(LocalDate.now());
-        orderStatus = "Not Ready";
-        orderNum = ordID.nextInt(9000) + 300;
-        // trying to get the type of order IDs we had
-        // in the prototype in sprint 1
-    }
-    public void addItem(){
-        // will take in a parameter not sure what yet
-
-        /*
-        * if going to work with hashmaps; take in customer ID as the key
-        * value for hashmap will store what they want on their order
-        * in that case parameter will be unique customer ID
-        * */
+    /**
+     * Create a new order with no items
+     * @param customerID
+     */
+    public Order(String customerID) {
+        this.customerID = customerID;
+        this.items = new ArrayList<>();
     }
 
-    public void removeItem(){
-        // will also take in a parameter similar to that of the add method
-        // what they want taken out could also be a parameter
-        // ie this will be one of our values in the key-value pair
-        // ie we take in the customer ID again and
-        // use that to look up what needs to be taken out
+    /**
+     * Create a new order with items
+     * @param customerID the ID of the customer who placed the order
+     * @param items the items to add to the order
+     */
+    public Order(String customerID, List<OrderItem> items) {
+        this.customerID = customerID;
+        this.items = items;
     }
 
-    public double calculateorderTotal(){
-        // takes in customer ID maybe and adds everything from the
-        // customer's most recent order to give grand total
-        // could use more detail
-        return 0.0;
+    /**
+     * Create a new order from a JSON object
+     * @param jsonObject the JSON object to create the order from
+     */
+    public Order(JSONObject jsonObject) {
+        this.customerID = jsonObject.get("customerID").toString();
+
+        // Loop through all items in the JSON object and add them to the order
+        this.items = new ArrayList<>();
+        for (Object item : (JSONArray) jsonObject.get("items")) {
+            this.items.add(new OrderItem((JSONObject) item));
+        }
     }
 
-    public String orderDetails(){
-        // takes in customer ID and retrieves
-        // most recent order info, returns info as a string
-        return " ";
+    /**
+     * Get the ID of the customer who placed the order
+     * @return the customer ID
+     */
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void cancelOrder(){
-        // takes out a customer's ID as the key and searches
-        // for the most recent value, this is what we take out
+    /**
+     * Get the items in the order
+     * @return the items in the order
+     */
+    public List<OrderItem> getItems() {
+        return items;
     }
 
-    public void deliveryAddress(){
-        // not sure if needed, but I have it just in case
+    /**
+     * Add an item to the order
+     * @param item the item to add
+     */
+    public void addItem(OrderItem item) {
+        items.add(item);
+    }
+
+    /**
+     * Get the JSON representation of the order
+     */
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+
+        // Add the regular fields to the JSON object
+        jsonObject.put("customerID", customerID);
+
+        // Create a JSON array to store the items and get the JSON representation of each item
+        JSONArray itemsArray = new JSONArray();
+        for (OrderItem item : items) {
+            itemsArray.add(item.toJSON());
+        }
+
+        // Add the items array to the JSON object
+        jsonObject.put("items", itemsArray);
+        return jsonObject;
     }
 }
 
