@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 
+
 public class AddCustomerController {
     @FXML
     private TextField storeNameInput;
@@ -35,49 +36,51 @@ public class AddCustomerController {
     @FXML
     private TextField dockCapabilitiesInput;
 
-
+    /**
+     * On the exit of the add customer page, this function will be called to navigate back to the customers view
+     * @param event
+     * @throws IOException
+     */
     @FXML
-    private void onExit(ActionEvent event) throws IOException{
-        Application.setScene("customers-view.fxml");
+    private void onExit(ActionEvent event) throws IOException {
+        Application.setScene("customers.fxml");
     }
+
+    /**
+     * On the creation of a new customer, this function will be called to add the customer to the state
+     * and persist the customer to the customers.json file
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
+        // Fetch the initial customers from the customers.json file
         JSONArray customers = JSON.parseDynamicArray("/customers.json");
-        System.out.print(customers);
 
-        String storeName = storeNameInput.getText();
-        String customerName = nameInput.getText();
-        String streetAddress = streetAddressInput.getText();
-        String city = cityInput.getText();
-        String state = stateInput.getText();
-        String phoneNumber = phoneNumberInput.getText();
-        String license = licenseInput.getText();
-       /* String cardNum = cardNumInput.getText();
-        String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
-        String cardCvv = cardCvvInput.getText();*/
-        String dockCapabilities = dockCapabilitiesInput.getText();
-
-        // Create the new customer object
-        Customer customer = new Customer(customerName, storeName, streetAddress, city, state, phoneNumber );
-        customer.setDockCapabilities(dockCapabilities);
-        customer.setBeerLicense(license);
+        // Create an object to store the new customer
         JSONObject newCustomer = new JSONObject();
 
-        newCustomer.put("store", customer.getStore());
-        newCustomer.put("customer_id", customer.getCustomerId());
-        newCustomer.put("name", customer.getName());
-        newCustomer.put("address", customer.getStreetAddress());
-        newCustomer.put("city", customer.getCity());
-        newCustomer.put("state", customer.getState());
-        newCustomer.put("phone", customer.getPhone());
+        newCustomer.put("storeName", storeNameInput.getText());
+        newCustomer.put("fullName", nameInput.getText());
+        newCustomer.put("license", licenseInput.getText());
+        newCustomer.put("phoneNumber", phoneNumberInput.getText());
+        newCustomer.put("streetAddress", streetAddressInput.getText());
+        newCustomer.put("city", cityInput.getText());
+        newCustomer.put("state", stateInput.getText());
+        newCustomer.put("cardNumber", cardNumInput.getText());
+        newCustomer.put("cardExpiration", cardExpInput.getText());
+        newCustomer.put("cardCVV", cardCvvInput.getText());
+        newCustomer.put("dockCapabilities", dockCapabilitiesInput.getText());
 
+        Customer customer = new Customer(newCustomer);
 
+        newCustomer.put("id", customer.getId());
         customers.add(newCustomer);
 
-        // Write the new customer to the customers.json file
+        // Write the new customer to the customers.json file, and add it to the state
         JSON.write("/customers.json", customers);
         Application.customers.add(customer);
 
-        Application.setScene("customers-view.fxml");
+        Application.setScene("customers.fxml");
     }
 }

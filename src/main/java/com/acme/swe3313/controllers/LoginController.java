@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import static com.acme.swe3313.Application.populateCustomers;
+
 
 public class LoginController {
     @FXML
@@ -19,7 +19,7 @@ public class LoginController {
     private Label errorLabel;
 
     @FXML
-    private void onSubmit(ActionEvent event) throws IOException {
+    private void onSubmit(ActionEvent event) {
         String email = emailInput.getText();
         String password = passwordInput.getText();
 
@@ -27,8 +27,8 @@ public class LoginController {
 
         try {
             if (associate.login(email, password)) {
-                populateCustomers();
-                Application.setScene("customers-view.fxml");
+                Application.populateData();
+                Application.setScene("customers.fxml");
             } else {
                 errorLabel.setVisible(true);
                 errorLabel.setText("Invalid email or password");

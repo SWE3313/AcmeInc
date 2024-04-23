@@ -1,55 +1,119 @@
 package com.acme.swe3313.models;
 
+import org.json.simple.JSONObject;
+
 public class Product {
-    private boolean prodStatus;
-    private int prodID;
-    private String itemDescription;
+    private long id;
+    private String description;
     private String supplierName;
     private String brandName;
-    private String subName;
-    private String prodDescription;
-    private String containerName;
-    private String sizeDescription;
-    private String extendedProdDescription;
-    private String prodClassDescription;
-    private int itemsOnHand;
-    private int currSales;
-    private int dateReceived;
-    private int itemsOnOrder;
+    private long  quantity;
 
-    public int getProdID(){return prodID;}
-    public String getItemDescription(){return itemDescription;}
-    public String getSupplierName(){return supplierName;}
-    public String getBrandName(){return brandName;}
-    public String getSubName(){return subName;}
-    public String getProdDescription(){return prodDescription;}
-    public String getContainerName(){return containerName;}
-    public String getSizeDescription(){return sizeDescription;}
-    public String getExtendedProdDescription(){return extendedProdDescription;}
-    public String getProdClassDescription(){return prodClassDescription;}
-    public int getItemsOnHand(){return itemsOnHand;}
-    public int getCurrSales(){return currSales;}
-    public int getDateReceived(){return dateReceived;}
-    public int getItemsOnOrder(){return itemsOnOrder;}
+    /**
+     * Create a new Product by inputting all the necessary fields
+     * @param id
+     * @param description
+     * @param supplierName
+     * @param brandName
+     * @param quantity
+     */
+    public Product(int id, String description, String supplierName, String brandName, int quantity) {
+        this.id = id;
+        this.description = description;
+        this.supplierName = supplierName;
+        this.brandName = brandName;
+        this.quantity = quantity;
+    }
 
-    public Product(String ps, int pID,String iDescr, String supn, String bn, String subn, String pd,
-    String cn, String sd, String epd, String pcd, int ioh, int cs, int dr, int ioo){
-        //Check for product status while reading the products
+    /**
+     * Overloaded constructor to create a Product from a JSON object
+     * @param json
+     */
+    public Product(JSONObject json) {
+        this.id = (long) json.get("id");
+        this.description = (String) json.get("description");
+        this.supplierName = (String) json.get("supplier_name");
+        this.brandName = (String) json.get("brand_name");
+        this.quantity = (long) json.get("quantity");
+    }
 
-        prodID = pID;
-        itemDescription = iDescr;
-        supplierName = supn;
-        brandName = bn;
-        subName = subn;
-        prodDescription = pd;
-        containerName = cn;
-        sizeDescription = sd;
-        extendedProdDescription = epd;
-        prodClassDescription = pcd;
-        itemsOnHand = ioh;
-        currSales = cs;
-        dateReceived = dr;
-        itemsOnOrder = ioo;
+    /**
+     * Get the ID of the product
+     * @return the ID of the product
+     */
+    public long getId() {
+        return id;
+    }
 
+    /**
+     * Get the description of the product
+     * @return the description of the product
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Get the supplier name of the product
+     * @return the supplier name of the product
+     */
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    /**
+     * Get the brand name of the product
+     * @return the brand name of the product
+     */
+    public String getBrandName() {
+        return brandName;
+    }
+
+    /**
+     * Get the quantity of the product
+     * @return the quantity of the product
+     */
+    public long getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * Set the quantity of the product
+     * @param quantity the new quantity of the product
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    /**
+     * Decrease the quantity of the product by a given amount
+     * @param amount the amount to decrease the quantity by
+     */
+    public void decreaseQuantity(int amount) {
+        this.quantity -= amount;
+    }
+
+    /**
+     * Increase the quantity of the product by a given amount
+     * @param amount the amount to increase the quantity by
+     */
+    public void increaseQuantity(int amount) {
+        this.quantity += amount;
+    }
+
+    /**
+     * Convert the product to a JSON object
+     * @return the JSON object representation of the product
+     */
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+
+        json.put("id", id);
+        json.put("description", description);
+        json.put("supplier_name", supplierName);
+        json.put("brand_name", brandName);
+        json.put("quantity", quantity);
+
+        return json;
     }
 }

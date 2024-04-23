@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="1735.0" style="-fx-border-color: transparent transparent #D1D5DB transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.swe3313.controllers.components.OrderRowController">
+    <children>
+        <Label fx:id="customerStoreName" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0" text="Customer">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="address" layoutX="34.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0" text="Delivery Address" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <padding>
+                <Insets right="12.0" />
+            </padding>
+        </Label>
+        <Label fx:id="quantity" layoutX="209.0" layoutY="22.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="225.0" text="Quantity of Items" textFill="#6b7280">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+    </children>
+    <padding>
+        <Insets left="24.0" right="24.0" />
+    </padding>
+    </HBox>

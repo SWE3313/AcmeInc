@@ -9,4 +9,6 @@ module com.acme.swe {
     exports com.acme.swe3313;
     exports com.acme.swe3313.controllers;
     opens com.acme.swe3313.controllers to javafx.fxml;
+    exports com.acme.swe3313.controllers.components;
+    opens com.acme.swe3313.controllers.components to javafx.fxml;
 }

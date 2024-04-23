@@ -1,51 +1,86 @@
-{
-  "ABC Package Store": {
-    "name": "Nolen Ryann",
-    "iD": "ABCPS_123432109",
-    "address": "3324 Sandie Plains Rd",
+[
+  {
+    "id": "ABCPS_123432109",
+    "storeName": "ABC Package Store",
+    "fullName": "Nolen Ryann",
+    "license": "123456789",
+    "phoneNumber": "558 555 1213",
+    "streetAddress": "3324 Sandie Plains Rd",
     "city": "Marietta",
     "state": "GA",
-    "phone": "558 555 1213"
-
+    "cardNumber": "4916144888889888",
+    "cardExpiration": "07/26",
+    "cardCVV": "123",
+    "dockCapabilities": "Standard"
   },
-    "BPD Grocery Store": {
-      "name": "James Johnson",
-      "iD": "BPDGS_254786510",
-      "address": "2960 Shallowford Rd",
-      "city": "Marietta",
-      "state": "GA",
-      "phone": "585 812 5784"
-  },
-  "The Restaurant": {
-    "name": "Jessica Smith",
-    "iD": "TREST_985741204",
-    "address": "3460 Sandie Plains Rd",
+  {
+    "id": "BPDGS_254786510",
+    "storeName": "BPD Grocery Store",
+    "fullName": "James Johnson",
+    "license": "987654321",
+    "phoneNumber": "585 812 5784",
+    "streetAddress": "2960 Shallowford Rd",
     "city": "Marietta",
     "state": "GA",
-    "phone": "547 555 1217"
+    "cardNumber": "5469684684686868",
+    "cardExpiration": "05/25",
+    "cardCVV": "456",
+    "dockCapabilities": "Premium"
   },
-  "GHI Beverages": {
-    "name": "Nellie Jones",
-    "iD": "GHIBS_012382109",
-    "address": "3324 Cobb Parkway",
+  {
+    "id": "TREST_985741204",
+    "storeName": "The Restaurant",
+    "fullName": "Jessica Smith",
+    "license": "456789123",
+    "phoneNumber": "547 555 1217",
+    "streetAddress": "3460 Sandie Plains Rd",
     "city": "Marietta",
     "state": "GA",
-    "phone": "878 555 1214"
+    "cardNumber": "4685568899856685",
+    "cardExpiration": "09/27",
+    "cardCVV": "789",
+    "dockCapabilities": "Basic"
   },
-  "XYZ Groceries": {
-    "name": "Spencer Smithers",
-    "iD": "XYZGS_654786810",
-    "address": "2860 Deep River Rd",
+  {
+    "id": "GHIBS_012382109",
+    "storeName": "GHI Beverages",
+    "fullName": "Nellie Jones",
+    "license": "987654321",
+    "phoneNumber": "878 555 1214",
+    "streetAddress": "3324 Cobb Parkway",
     "city": "Marietta",
     "state": "GA",
-    "phone": "572 812 5674"
+    "cardNumber": "4000056655441234",
+    "cardExpiration": "03/28",
+    "cardCVV": "321",
+    "dockCapabilities": "Standard"
   },
-  "The Corner Restaurant": {
-    "name": "Thomas Gav",
-    "iD": "TCRST_945741304",
-    "address": "34104 Madison Hwy",
+  {
+    "id": "XYZGS_654786810",
+    "storeName": "XYZ Groceries",
+    "fullName": "Spencer Smithers",
+    "license": "123456789",
+    "phoneNumber": "572 812 5674",
+    "streetAddress": "2860 Deep River Rd",
     "city": "Marietta",
     "state": "GA",
-    "phone": "567 555 1210"
+    "cardNumber": "5324939569852134",
+    "cardExpiration": "11/25",
+    "cardCVV": "654",
+    "dockCapabilities": "Premium"
+  },
+  {
+    "id": "TCRST_945741304",
+    "storeName": "The Corner Restaurant",
+    "fullName": "Thomas Gav",
+    "license": "456789123",
+    "phoneNumber": "567 555 1210",
+    "streetAddress": "34104 Madison Hwy",
+    "city": "Marietta",
+    "state": "GA",
+    "cardNumber": "4789651236549874",
+    "cardExpiration": "08/26",
+    "cardCVV": "987",
+    "dockCapabilities": "Basic"
   }
-}
+]
